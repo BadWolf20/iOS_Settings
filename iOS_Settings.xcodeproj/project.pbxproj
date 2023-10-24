@@ -13,6 +13,7 @@
 		307CACF32AE799A0002C983F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 307CACF12AE799A0002C983F /* LaunchScreen.storyboard */; };
 		307CACFB2AE799CD002C983F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307CACFA2AE799CD002C983F /* MainViewController.swift */; };
 		307CACFE2AE79B7D002C983F /* NotificationManager in Frameworks */ = {isa = PBXBuildFile; productRef = 307CACFD2AE79B7D002C983F /* NotificationManager */; };
+		307CAD042AE79E18002C983F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 307CAD032AE79E18002C983F /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				307CACFE2AE79B7D002C983F /* NotificationManager in Frameworks */,
+				307CAD042AE79E18002C983F /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +86,7 @@
 			name = iOS_Settings;
 			packageProductDependencies = (
 				307CACFD2AE79B7D002C983F /* NotificationManager */,
+				307CAD032AE79E18002C983F /* SnapKit */,
 			);
 			productName = iOS_Settings;
 			productReference = 307CACE32AE7999F002C983F /* iOS_Settings.app */;
@@ -115,6 +118,7 @@
 			mainGroup = 307CACDA2AE7999F002C983F;
 			packageReferences = (
 				307CACFC2AE79B7D002C983F /* XCRemoteSwiftPackageReference "NotificationManager" */,
+				307CAD022AE79E18002C983F /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 307CACE42AE7999F002C983F /* Products */;
 			projectDirPath = "";
@@ -367,6 +371,14 @@
 				kind = branch;
 			};
 		};
+		307CAD022AE79E18002C983F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -374,6 +386,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 307CACFC2AE79B7D002C983F /* XCRemoteSwiftPackageReference "NotificationManager" */;
 			productName = NotificationManager;
+		};
+		307CAD032AE79E18002C983F /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 307CAD022AE79E18002C983F /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
