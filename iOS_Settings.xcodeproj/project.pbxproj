@@ -12,6 +12,7 @@
 		307CACF02AE799A0002C983F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 307CACEF2AE799A0002C983F /* Assets.xcassets */; };
 		307CACF32AE799A0002C983F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 307CACF12AE799A0002C983F /* LaunchScreen.storyboard */; };
 		307CACFB2AE799CD002C983F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307CACFA2AE799CD002C983F /* MainViewController.swift */; };
+		307CACFE2AE79B7D002C983F /* NotificationManager in Frameworks */ = {isa = PBXBuildFile; productRef = 307CACFD2AE79B7D002C983F /* NotificationManager */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				307CACFE2AE79B7D002C983F /* NotificationManager in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +82,9 @@
 			dependencies = (
 			);
 			name = iOS_Settings;
+			packageProductDependencies = (
+				307CACFD2AE79B7D002C983F /* NotificationManager */,
+			);
 			productName = iOS_Settings;
 			productReference = 307CACE32AE7999F002C983F /* iOS_Settings.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +113,9 @@
 				Base,
 			);
 			mainGroup = 307CACDA2AE7999F002C983F;
+			packageReferences = (
+				307CACFC2AE79B7D002C983F /* XCRemoteSwiftPackageReference "NotificationManager" */,
+			);
 			productRefGroup = 307CACE42AE7999F002C983F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -349,6 +357,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		307CACFC2AE79B7D002C983F /* XCRemoteSwiftPackageReference "NotificationManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BadWolf20/NotificationManager";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		307CACFD2AE79B7D002C983F /* NotificationManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 307CACFC2AE79B7D002C983F /* XCRemoteSwiftPackageReference "NotificationManager" */;
+			productName = NotificationManager;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 307CACDB2AE7999F002C983F /* Project object */;
 }
