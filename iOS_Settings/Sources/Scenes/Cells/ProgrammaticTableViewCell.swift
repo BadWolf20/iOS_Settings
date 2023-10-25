@@ -8,12 +8,10 @@
 import UIKit
 import SnapKit
 
-class ProgrammaticTableViewCell: UITableViewCell {
+class ProgrammaticTableViewCell: UITableViewCell, Reusable {
 
     // MARK: - Properties
-    static let reuseIdentifier = "ProgrammaticTableViewCell"
     var switchAction: ((Bool) -> Void)?
-
 
 
     // MARK: - Components
@@ -36,22 +34,18 @@ class ProgrammaticTableViewCell: UITableViewCell {
         imageView.image = image
         imageView.contentMode = .scaleAspectFill
 
-        imageView.isHidden = true
         return imageView
     }()
 
     private lazy var rightSwitch: UISwitch = {
         let toggle = UISwitch()
-        toggle.isHidden = true
         toggle.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
         return toggle
     }()
 
     // MARK: - Initializers
-
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
         setupUI()
     }
     
@@ -62,21 +56,27 @@ class ProgrammaticTableViewCell: UITableViewCell {
     // MARK: - Lifecycle
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    // MARK: - Configuration
+    func configure(with data: Setting) {
+        mainLabel.text = data.name
+        iconImage.image = data.imageMain
+
+        switch data.style {
+        case .check:
+            rightSwitch.isHidden = false
+        case .move:
+            rightMoveIcon.isHidden = false
+        }
     }
+
 
     // MARK: - Setup
     private func setupUI() {
-
         setupHierarchy()
         setupConstraints()
         setupComponents()
-        setupText()
     }
 
     private func setupHierarchy() {
@@ -87,10 +87,8 @@ class ProgrammaticTableViewCell: UITableViewCell {
     }
 
     private func setupComponents() {
-
-    }
-
-    private func setupText() {
+        rightSwitch.isHidden = true
+        rightMoveIcon.isHidden = true
     }
 
     private func setupConstraints() {
@@ -120,18 +118,7 @@ class ProgrammaticTableViewCell: UITableViewCell {
         }
     }
 
-    func configure(with data: Setting) {
-        mainLabel.text = data.name
-        iconImage.image = data.imageMain
-
-        switch data.style {
-        case .check:
-            rightSwitch.isHidden = false
-        case .move:
-            rightMoveIcon.isHidden = false
-        }
-    }
-
+    // MARK: - Actions
     @objc private func switchChanged() {
         switchAction?(rightSwitch.isOn)
     }

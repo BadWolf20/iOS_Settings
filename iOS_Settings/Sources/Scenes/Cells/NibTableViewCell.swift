@@ -7,24 +7,25 @@
 
 import UIKit
 
-class NibTableViewCell: UITableViewCell {
-    static let reuseIdentifier = "NibTableViewCell"
+class NibTableViewCell: UITableViewCell, Reusable, NibLoadable {
 
+    // MARK: - Componets Outlets
     @IBOutlet weak var rightSwitch: UISwitch!
     @IBOutlet weak var rightMoveIcon: UIImageView!
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var mainLabel: UILabel!
 
+
+    // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
     }
 
+    // MARK: - Configuration
     func configure(with data: Setting) {
         mainLabel.text = data.name
         iconImage.image = data.imageMain
@@ -36,5 +37,4 @@ class NibTableViewCell: UITableViewCell {
             rightMoveIcon.isHidden = false
         }
     }
-
 }

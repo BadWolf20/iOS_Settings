@@ -21,6 +21,7 @@
 		30D77CC82AE818E80038B47C /* NibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D77CC62AE818E80038B47C /* NibTableViewCell.swift */; };
 		30D77CC92AE818E80038B47C /* NibTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30D77CC72AE818E80038B47C /* NibTableViewCell.xib */; };
 		30D77CCB2AE827D60038B47C /* ProgrammaticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D77CCA2AE827D60038B47C /* ProgrammaticTableViewCell.swift */; };
+		30EBBC282AE9006F00E835E1 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EBBC272AE9006F00E835E1 /* TableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		30D77CC62AE818E80038B47C /* NibTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibTableViewCell.swift; sourceTree = "<group>"; };
 		30D77CC72AE818E80038B47C /* NibTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NibTableViewCell.xib; sourceTree = "<group>"; };
 		30D77CCA2AE827D60038B47C /* ProgrammaticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticTableViewCell.swift; sourceTree = "<group>"; };
+		30EBBC272AE9006F00E835E1 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,10 +106,7 @@
 			children = (
 				307CACFA2AE799CD002C983F /* MainViewController.swift */,
 				30D77CC42AE7F5650038B47C /* DetailViewController.swift */,
-				30D77CCA2AE827D60038B47C /* ProgrammaticTableViewCell.swift */,
-				30D77CC62AE818E80038B47C /* NibTableViewCell.swift */,
-				30D77CC72AE818E80038B47C /* NibTableViewCell.xib */,
-				30D77CC22AE7F4920038B47C /* DefaultTableViewCell.swift */,
+				30EBBC252AE8FD2600E835E1 /* Cells */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -115,6 +114,7 @@
 		30D77CCF2AE8F9D00038B47C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				30EBBC262AE9005500E835E1 /* Extensions */,
 				30D77CCE2AE8F91D0038B47C /* Scenes */,
 				30D77CCD2AE8F9050038B47C /* App */,
 			);
@@ -127,6 +127,25 @@
 				30D77CC02AE7D6AD0038B47C /* Settings.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		30EBBC252AE8FD2600E835E1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				30D77CCA2AE827D60038B47C /* ProgrammaticTableViewCell.swift */,
+				30D77CC62AE818E80038B47C /* NibTableViewCell.swift */,
+				30D77CC72AE818E80038B47C /* NibTableViewCell.xib */,
+				30D77CC22AE7F4920038B47C /* DefaultTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		30EBBC262AE9005500E835E1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				30EBBC272AE9006F00E835E1 /* TableView.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30D77CC52AE7F5650038B47C /* DetailViewController.swift in Sources */,
+				30EBBC282AE9006F00E835E1 /* TableView.swift in Sources */,
 				307CACFB2AE799CD002C983F /* MainViewController.swift in Sources */,
 				307CACE72AE7999F002C983F /* AppDelegate.swift in Sources */,
 				30D77CC32AE7F4920038B47C /* DefaultTableViewCell.swift in Sources */,
@@ -362,7 +382,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9CUB4SJUB5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = iOS_Settings/Info.plist;
+				INFOPLIST_FILE = iOS_Settings/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -389,7 +409,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9CUB4SJUB5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = iOS_Settings/Info.plist;
+				INFOPLIST_FILE = iOS_Settings/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

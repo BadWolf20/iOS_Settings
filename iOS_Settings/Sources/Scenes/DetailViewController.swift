@@ -10,11 +10,7 @@ import UIKit
 class DetailViewController: UIViewController {
     
     // MARK: - Properties
-    let screenName: String
-
-
-    // MARK: - Components
-
+    private let screenName: String
 
 
     // MARK: - Initializers
@@ -29,7 +25,6 @@ class DetailViewController: UIViewController {
 
 
     // MARK: - Lifecycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -38,7 +33,6 @@ class DetailViewController: UIViewController {
 
     // MARK: - Setup
     private func setupUI() {
-
         setupHierarchy()
         setupConstraints()
         setupComponents()
@@ -53,11 +47,10 @@ class DetailViewController: UIViewController {
         view.backgroundColor = .systemGreen
         self.navigationController?.navigationBar.prefersLargeTitles = true
 
-        self.title = screenName
     }
 
     private func setupText() {
-
+        self.title = screenName
     }
 
     private func setupConstraints() {

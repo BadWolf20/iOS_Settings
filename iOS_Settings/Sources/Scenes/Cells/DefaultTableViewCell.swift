@@ -7,10 +7,9 @@
 
 import UIKit
 
-class DefaultTableViewCell: UITableViewCell {
-    static let reuseIdentifier = "DefaultTableViewCell"
+class DefaultTableViewCell: UITableViewCell, Reusable {
 
-    // При повторном использовании ячейки сбрасываем настройки
+    // MARK: - Lifecycle
     override func prepareForReuse() {
         super.prepareForReuse()
         self.accessoryType = .none

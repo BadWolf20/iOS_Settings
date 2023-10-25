@@ -11,19 +11,17 @@ import NotificationManager
 
 class MainViewController: UIViewController {
     // MARK: - Properties
-    var set = [Setting]()
+    private var set = [Setting]()
 
 
     // MARK: - Components
-    // Таблица для отображения настроек
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
 
-        tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: DefaultTableViewCell.reuseIdentifier)
-        let nib = UINib(nibName: "NibTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "NibCellIdentifier")
-        tableView.register(ProgrammaticTableViewCell.self, forCellReuseIdentifier: ProgrammaticTableViewCell.reuseIdentifier)
-
+        // Cell registering
+        tableView.register(cellType: ProgrammaticTableViewCell.self)
+        tableView.register(cellType: NibTableViewCell.self)
+        tableView.register(cellType: DefaultTableViewCell.self)
 
         tableView.frame = CGRect.init(origin: .zero, size: view.frame.size)
         tableView.rowHeight = 50
@@ -32,13 +30,6 @@ class MainViewController: UIViewController {
 
         return tableView
     }()
-
-
-
-
-    // MARK: - Initializers
-
-
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -49,7 +40,6 @@ class MainViewController: UIViewController {
 
     // MARK: - Setup
     private func setupUI() {
-
         setupHierarchy()
         setupConstraints()
         setupComponents()
@@ -62,26 +52,19 @@ class MainViewController: UIViewController {
 
     private func setupComponents() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
-
-        self.title = "Settings"
         view.backgroundColor = .systemBackground
 
     }
 
     private func setupText() {
-
+        self.title = "Settings"
     }
 
     private func setupConstraints() {
         tableView.snp.remakeConstraints { make in
             make.bottom.top.left.right.equalTo(view.safeAreaLayoutGuide)
         }
-
     }
-
-    // MARK: - Update
-
-
 
     // MARK: - Actions
     // Обработка переключения свитча
@@ -92,7 +75,7 @@ class MainViewController: UIViewController {
 
     // MARK: - Functions
     // Переход к экрану настроек на основе выбранной строки
-    func moveToSetttingView(_ pageName: String) {
+    private func moveToSetttingView(_ pageName: String) {
         switch pageName{
         case "Wi-Fi", "General":
             navigationController?.pushViewController(DetailViewController(screenName: pageName), animated: true)
@@ -103,7 +86,7 @@ class MainViewController: UIViewController {
 
 }
 
-//  Добавление таблицы
+// MARK: - UITableView
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 
     // Обработка выбора строки в таблице
@@ -173,10 +156,9 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
 
+    // MARK: - Cell configuration
     // Определение содержимого ячейки
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-
         switch indexPath.section {
         case 0:
             set = Setting.getSettingsList(block: .fast)
@@ -192,7 +174,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 
         switch indexPath.section {
         case 0:
-            let cell = self.tableView.dequeueReusableCell(withIdentifier: DefaultTableViewCell.reuseIdentifier, for: indexPath) as! DefaultTableViewCell
+            let cell: DefaultTableViewCell = self.tableView.dequeueReusableCell(for: indexPath, cellType: DefaultTableViewCell.self)
             // Присвоение значений в ячейки
             var content = cell.defaultContentConfiguration()
             content.text = setChose.name
@@ -219,15 +201,17 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NibCellIdentifier", for: indexPath) as! NibTableViewCell
+            let cell: NibTableViewCell = tableView.dequeueReusableCell(for: indexPath, cellType: NibTableViewCell.self)
             cell.configure(with: setChose)
+
             return cell
         case 2:
-            let cell = self.tableView.dequeueReusableCell(withIdentifier: ProgrammaticTableViewCell.reuseIdentifier, for: indexPath) as! ProgrammaticTableViewCell
+            let cell: ProgrammaticTableViewCell = self.tableView.dequeueReusableCell(for: indexPath, cellType: ProgrammaticTableViewCell.self)
             cell.configure(with: setChose)
             cell.switchAction = { isOn in
                 NotificationManager.shared.sendNotification(withTitle: "You changed state to \(isOn ? "on" : "off")")
             }
+
             return cell
         default:
             return UITableViewCell()
